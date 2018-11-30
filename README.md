@@ -20,4 +20,4 @@ $ yarn run dev
 1. Copy `terraform.tfvars.example` to `terraform.tfvars` and set credentials.
 2. Apply `02_acm.tf` and wait verification. because ALB and CloudFront need verified certificates.
 3. Apply .tf files other than `03_route53.tf`
-4. apply `03_route53.tf`
+4. Apply `03_route53.tf`
