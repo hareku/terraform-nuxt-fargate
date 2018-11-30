@@ -3,7 +3,7 @@
 #####################################
 resource "aws_cloudfront_distribution" "this" {
   origin {
-    domain_name = "devicebook-web.ap-northeast-1.elasticbeanstalk.com"
+    domain_name = "${aws_lb.this.dns_name}"
     origin_id   = "${local.cloudfrond_origin_id}"
 
     custom_origin_config {
