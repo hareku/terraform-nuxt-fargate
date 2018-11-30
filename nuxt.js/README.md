@@ -14,7 +14,7 @@ $ docker-compose exec node sh
 # install dependencies
 $ yarn install
 
-$ run dev server localhost:80
+# run dev server localhost:80
 $ yarn run dev
 ```
 
