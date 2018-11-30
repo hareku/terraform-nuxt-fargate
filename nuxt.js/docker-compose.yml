@@ -1,0 +1,28 @@
+version: '2'
+
+services:
+
+  rp:
+    image: lkwg82/h2o-http2-server:v2.2.5
+    tty: true
+    command: h2o --conf /etc/h2o/conf/dev.conf
+    ports:
+      - "80:8080"
+    volumes:
+      - .:/var/www
+      - ./docker/h2o/conf:/etc/h2o/conf
+    depends_on:
+      - web
+
+  web:
+    build:
+      context: ./docker/node
+    tty: true
+    working_dir: /var/www
+    volumes:
+      - .:/var/www
+    environment:
+      - NODE_ENV=development
+      - HOST=0.0.0.0
+    expose:
+      - "3000"

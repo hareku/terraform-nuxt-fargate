@@ -1,0 +1,21 @@
+FROM node:8.12-alpine
+
+# Copy application
+COPY . /var/www
+WORKDIR /var/www
+
+# Install dependencies
+RUN yarn install --no-progress \
+  && yarn cache clean \
+  && NODE_ENV=production \
+    HOST=127.0.0.1 \
+    yarn run build
+
+# Archive client assets
+RUN tar czf /dist-client.tar.gz .nuxt/dist/client
+
+EXPOSE 3000
+
+USER node
+
+CMD ["yarn", "run", "start"]

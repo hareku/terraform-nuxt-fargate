@@ -1,0 +1,37 @@
+[
+  {
+    "name": "rp",
+    "image": "${rp_image_url}",
+    "essential": true,
+    "network_mode": "awsvpc",
+    "portMappings": [
+      {
+        "containerPort": 8080,
+        "hostPort": 8080,
+        "protocol": "tcp"
+      }
+    ],
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-group": "${aws_logs_group}",
+        "awslogs-region": "${aws_region}",
+        "awslogs-stream-prefix": "main-task"
+      }
+    }
+  },
+  {
+    "name": "web",
+    "image": "${web_image_url}",
+    "essential": true,
+    "network_mode": "awsvpc",
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-group": "${aws_logs_group}",
+        "awslogs-region": "${aws_region}",
+        "awslogs-stream-prefix": "main-task"
+      }
+    }
+  }
+]
